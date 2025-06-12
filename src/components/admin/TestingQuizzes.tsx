@@ -2,8 +2,11 @@ import React, { useState, ChangeEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth } from '../../contexts/AuthContext'; // Import useAuth
 import { saveQuizToFirestore } from '../../services/firestore/quizService'; // Import saveQuizToFirestore
+<<<<<<< HEAD
 import 'katex/dist/katex.min.css'; // Import KaTeX CSS
 import { InlineMath, BlockMath } from 'react-katex';
+=======
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
 
 export interface QuizQuestion {
   id: string; // Unique ID for the question
@@ -26,6 +29,7 @@ export interface QuizDetails {
   targetAudience: 'all' | 'authenticated' | 'non-authenticated';
 }
 
+<<<<<<< HEAD
 // Enhanced helper function to convert LaTeX-like notation to Unicode
 const formatTextWithUnicode = (str: string): string => {
   if (!str) return '';
@@ -358,6 +362,25 @@ const LatexRenderer: React.FC<{ children: string }> = ({ children }) => {
     // Fallback to Unicode formatting
     return <span dangerouslySetInnerHTML={{ __html: formatTextWithUnicode(convertedText) }} />;
   }
+=======
+// Helper function to convert ^ notation to superscript
+const toSuperscript = (str: string): string => {
+  if (!str) return '';
+  return str.replace(/\^(-?\d+)/g, (_, numStr) => { // Capture optional minus sign
+    const superscriptDigits: { [key: string]: string } = {
+      '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+      '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹'
+    };
+    let isNegative = false;
+    let digitsToConvert = numStr;
+    if (numStr.startsWith('-')) {
+      isNegative = true;
+      digitsToConvert = numStr.substring(1);
+    }
+    const convertedDigits = digitsToConvert.split('').map((digit: string) => superscriptDigits[digit] || digit).join('');
+    return isNegative ? `⁻${convertedDigits}` : convertedDigits;
+  });
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
 };
 
 const TestingQuizzes: React.FC = () => {
@@ -417,6 +440,7 @@ const TestingQuizzes: React.FC = () => {
       const sampleJson = `[
   {
     "questionNo":"1",
+<<<<<<< HEAD
     "question":"If x = log\\(_{b}\\)a, y = log\\(_{c}\\)b, and z=log\\(_{a}\\)c then xyz =",
     "imageLink": null,
     "option1":"0",
@@ -424,10 +448,20 @@ const TestingQuizzes: React.FC = () => {
     "option3":"2",
     "option4":"\\( \\cfrac{1}{2} \\)",
     "correctOption":"2",
+=======
+    "question":"What is the capital of France?",
+    "imageLink": null,
+    "option1":"Berlin",
+    "option2":"Madrid",
+    "option3":"Paris",
+    "option4":"Rome",
+    "correctOption":"3",
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
     "marks":"1"
   },
   {
     "questionNo":"2",
+<<<<<<< HEAD
     "question":"In the expansion of (1 + x)\\(^{10}\\), the coefficient of (4r + 5)\\(^{th }\\)term is equal to the coeff. of (2r + 1)\\(^{th}\\) term. Then, r",
     "imageLink": null,
     "option1":"7",
@@ -478,6 +512,25 @@ const TestingQuizzes: React.FC = () => {
     "option2":"\\(a\\, \\bot \\, (b-c)\\)",
     "option3":"\\(b=c\\) or \\(a\\, \\bot \\, (b-c)\\)",
     "option4":"None of these",
+=======
+    "question":"Example with x^2 and y^3. What is 2+2?",
+    "imageLink": null,
+    "option1":"3",
+    "option2":"4",
+    "option3":"5",
+    "option4":"Option with ^4",
+    "correctOption":"2",
+    "marks":"2"
+  },
+  {
+    "questionNo":"3",
+    "question":"",
+    "imageLink":"/questionImages/example-image.jpg",
+    "option1":"Option 1",
+    "option2":"Option 2",
+    "option3":"Option 3",
+    "option4":"Option 4",
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
     "correctOption":"3",
     "marks":"1"
   }
@@ -791,6 +844,7 @@ const TestingQuizzes: React.FC = () => {
         <h3 className="text-lg font-semibold mb-3">
           Enter Quiz JSON
         </h3>
+<<<<<<< HEAD
         <div className="mb-4 p-3 bg-blue-50 border-l-4 border-blue-400 rounded">
           <h4 className="font-semibold text-blue-800 mb-2">LaTeX Support</h4>
           <p className="text-sm text-blue-700 mb-2">You can use LaTeX mathematical expressions in questions and options:</p>
@@ -804,6 +858,8 @@ const TestingQuizzes: React.FC = () => {
           </ul>
           <p className="text-xs text-blue-600 mt-2">Note: Use double backslashes (\\\\) in JSON for LaTeX commands.</p>
         </div>
+=======
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
         <textarea
           className="w-full h-64 p-3 border border-gray-300 rounded-md mb-4 font-mono text-sm"
           value={jsonInput}
@@ -811,6 +867,7 @@ const TestingQuizzes: React.FC = () => {
           placeholder={`[
   {
     "questionNo":"1",
+<<<<<<< HEAD
     "question":"If x = log\\(_{b}\\)a, y = log\\(_{c}\\)b, and z=log\\(_{a}\\)c then xyz =",
     "imageLink": null,
     "option1":"0",
@@ -818,10 +875,20 @@ const TestingQuizzes: React.FC = () => {
     "option3":"2",
     "option4":"\\( \\cfrac{1}{2} \\)",
     "correctOption":"2",
+=======
+    "question":"What is the capital of France?",
+    "imageLink": null,
+    "option1":"Berlin",
+    "option2":"Madrid",
+    "option3":"Paris",
+    "option4":"Rome",
+    "correctOption":"3",
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
     "marks":"1"
   },
   {
     "questionNo":"2",
+<<<<<<< HEAD
     "question":"\\(\\displaystyle \\lim_{x \\to 0} \\cfrac{e^x-e^{-x}}{\\sin x} = \\)",
     "imageLink": null,
     "option1":"1",
@@ -851,6 +918,19 @@ Tips for LaTeX:
 - Subscripts: \\(_{subscript}\\), Superscripts: \\(^{superscript}\\)
 - Greek letters: \\alpha, \\beta, \\theta, etc.
 - Special symbols: \\infty, \\pm, \\cdot, \\perp, etc.`}
+=======
+    "question":"What is 2+2?",
+    "imageLink": null,
+    "option1":"3",
+    "option2":"4",
+    "option3":"5",
+    "option4":"6",
+    "correctOption":"2",
+    "marks":"2"
+  }
+  // ... more questions
+]`}
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
         />
         <button
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 mr-2"
@@ -1004,8 +1084,12 @@ Tips for LaTeX:
                 ) : (
                   // View Mode
                   <div>                    <p className="font-semibold mb-1">
+<<<<<<< HEAD
                       Q{formatTextWithUnicode(question.questionNo)}{question.question && question.question.trim() !== '' ? `: ` : ''}
                       {question.question && question.question.trim() !== '' && <LatexRenderer>{question.question}</LatexRenderer>}
+=======
+                      Q{toSuperscript(question.questionNo)}{question.question && question.question.trim() !== '' ? `: ${toSuperscript(question.question)}` : ''}
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
                     </p>                    {question.imageLink && question.imageLink !== 'null' && question.imageLink !== '' && (
                       <div className="mb-2">
                         <img 
@@ -1024,15 +1108,26 @@ Tips for LaTeX:
                       </div>
                     )}
                     <ul className="list-disc list-inside ml-4 mb-1">
+<<<<<<< HEAD
                       <li>Option 1: <LatexRenderer>{question.option1}</LatexRenderer></li>
                       <li>Option 2: <LatexRenderer>{question.option2}</LatexRenderer></li>
                       <li>Option 3: <LatexRenderer>{question.option3}</LatexRenderer></li>
                       <li>Option 4: <LatexRenderer>{question.option4}</LatexRenderer></li>
+=======
+                      <li>Option 1: {toSuperscript(question.option1)}</li>
+                      <li>Option 2: {toSuperscript(question.option2)}</li>
+                      <li>Option 3: {toSuperscript(question.option3)}</li>
+                      <li>Option 4: {toSuperscript(question.option4)}</li>
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
                     </ul>                    <p className="text-sm text-green-600 mb-1">
                       Correct Option: {question.correctOption && question.correctOption !== "0" ? `Option ${question.correctOption}` : "Not set"}
                     </p>
                     <p className="text-sm text-blue-600 mb-2">
+<<<<<<< HEAD
                       Marks: <LatexRenderer>{question.marks}</LatexRenderer>
+=======
+                      Marks: {toSuperscript(question.marks)}
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
                     </p>
                     {/* Display Question ID in view mode - useful for debugging */}
                     <p className="text-xs text-gray-400 mb-2">ID: {question.id}</p> 

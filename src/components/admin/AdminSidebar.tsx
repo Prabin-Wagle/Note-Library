@@ -16,9 +16,15 @@ const navItems: NavItem[] = [
   { to: '/admin/quizzes', icon: FiClipboard, label: 'Manage Quizzes' },
   { to: '/admin/testing-quizzes', icon: FiClipboard, label: 'Testing Quizzes' },
   { to: '/admin/blogs', icon: FiBookOpen, label: 'Manage Blogs' },
+<<<<<<< HEAD
   { to: '/admin/community', icon: FiMessageSquare, label: 'Community' },
   { to: '/admin/messages', icon: FiMessageSquare, label: 'Messages' },
   { to: '/admin/payment-details', icon: FiCreditCard, label: 'Payment Details' }, 
+=======
+  { to: '/admin/community', icon: FiMessageSquare, label: 'Community' }, // Added Community link
+  { to: '/admin/messages', icon: FiMessageSquare, label: 'Messages' },
+  { to: '/admin/payment-details', icon: FiCreditCard, label: 'Payment Details' }, // Added Messages link
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
 ];
 
 const AdminSidebar: React.FC = () => {
@@ -62,9 +68,15 @@ const AdminSidebar: React.FC = () => {
               <li key={item.label}>
                 <Link
                   to={item.to}
+<<<<<<< HEAD
                   onClick={() => isMobileOpen && setIsMobileOpen(false)}
                   className={`${baseItemClass} ${location.pathname === item.to ? activeItemClass : ''}`}
                   title={item.label} 
+=======
+                  onClick={() => isMobileOpen && setIsMobileOpen(false)} // Close mobile sidebar on link click
+                  className={`${baseItemClass} ${location.pathname === item.to ? activeItemClass : ''}`}
+                  title={item.label} // Tooltip for collapsed state
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
                 >
                   <item.icon size={20} className="flex-shrink-0" />
                   <span className={itemLabelClass}>{item.label}</span>
@@ -75,6 +87,10 @@ const AdminSidebar: React.FC = () => {
         </nav>
 
         <div className="p-4 border-t border-gray-700">
+<<<<<<< HEAD
+=======
+          {/* You can add a footer or user info here */}
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
           <p className={`text-xs text-gray-400 ${isCollapsed && !isMobileOpen ? 'hidden' : 'block'}`}>© 2024 Admin Panel</p>
         </div>
       </aside>

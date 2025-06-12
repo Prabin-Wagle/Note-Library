@@ -3,6 +3,10 @@ import { useAuth } from '../../contexts/AuthContext';
 import { LogOut } from 'lucide-react';
 import { useNavigate, Outlet } from 'react-router-dom'; // Import Outlet
 import AdminSidebar from './AdminSidebar';
+<<<<<<< HEAD
+=======
+// Removed CommunityApp import, it will be rendered via Outlet
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
 
 const AdminDashboard = () => {
   const { logout, currentUser } = useAuth();

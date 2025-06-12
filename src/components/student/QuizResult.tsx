@@ -2,14 +2,18 @@ import React from 'react';
 import { CheckCircle, XCircle, Clock, Award, Home, Download } from 'lucide-react';
 import { QuizResult } from './QuizPlayer';
 import jsPDF from 'jspdf';
+<<<<<<< HEAD
 import 'katex/dist/katex.min.css'; // Import KaTeX CSS
 import { InlineMath, BlockMath } from 'react-katex';
+=======
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
 
 interface QuizResultProps {
   result: QuizResult;
   onBackToQuizzes: () => void;
 }
 
+<<<<<<< HEAD
 // Enhanced helper function to convert LaTeX-like notation to Unicode
 const formatTextWithUnicode = (str: string): string => {
   if (!str) return '';
@@ -388,6 +392,8 @@ const LatexRenderer: React.FC<{ children: string }> = ({ children }) => {
   }
 };
 
+=======
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
 const QuizResultComponent: React.FC<QuizResultProps> = ({ 
   result, 
   onBackToQuizzes 
@@ -402,6 +408,7 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
     return Number(num.toFixed(1));
   };
 
+<<<<<<< HEAD
   // Helper function to convert LaTeX to plain text for PDF
   const latexToPlainText = (text: string): string => {
     if (!text) return '';
@@ -419,6 +426,8 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
       .trim();
   };
 
+=======
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
   // PDF Generation Function
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -432,7 +441,11 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
     // Quiz Info
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
+<<<<<<< HEAD
     doc.text(`Quiz: ${latexToPlainText(quiz.title)}`, 20, 40);
+=======
+    doc.text(`Quiz: ${quiz.title}`, 20, 40);
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
     doc.text(`Grade: ${quiz.grade}`, 20, 50);
     if (quiz.subject) doc.text(`Subject: ${quiz.subject}`, 20, 60);
     doc.text(`Completed: ${completedAt.toLocaleString()}`, 20, 70);
@@ -471,7 +484,11 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
       if (question.imageLink) {
         doc.text('(Image question - see original quiz)', 20, yPosition);
       } else {
+<<<<<<< HEAD
         const questionText = latexToPlainText(question.questionText || 'Question text not available');
+=======
+        const questionText = question.questionText || 'Question text not available';
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
         const lines = doc.splitTextToSize(questionText, pageWidth - 40);
         doc.text(lines, 20, yPosition);
         yPosition += lines.length * 5;
@@ -486,12 +503,20 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
       yPosition += 10;
       
       if (wasAnswered && selectedOption) {
+<<<<<<< HEAD
         doc.text(`Your Answer: ${latexToPlainText(selectedOption.text)}`, 20, yPosition);
+=======
+        doc.text(`Your Answer: ${selectedOption.text}`, 20, yPosition);
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
         yPosition += 5;
       }
       
       if (correctOption) {
+<<<<<<< HEAD
         doc.text(`Correct Answer: ${latexToPlainText(correctOption.text)}`, 20, yPosition);
+=======
+        doc.text(`Correct Answer: ${correctOption.text}`, 20, yPosition);
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
         yPosition += 5;
       }
       
@@ -499,7 +524,11 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
     });
     
     // Save the PDF
+<<<<<<< HEAD
     doc.save(`${latexToPlainText(quiz.title).replace(/[^a-z0-9]/gi, '_').toLowerCase()}_result.pdf`);
+=======
+    doc.save(`${quiz.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_result.pdf`);
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
   };
 
   const formatTime = (seconds: number) => {
@@ -567,7 +596,11 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
             <span className="text-xl font-bold">{getGradeText(percentage)}</span>
           </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Quiz Complete!</h1>
+<<<<<<< HEAD
           <p className="text-gray-600"><LatexRenderer>{quiz.title}</LatexRenderer></p>
+=======
+          <p className="text-gray-600">{quiz.title}</p>
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
         </div>
 
         {/* Score Summary */}
@@ -608,7 +641,11 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="flex justify-between py-2 border-b border-gray-100">
               <span className="text-gray-600">Quiz Title:</span>
+<<<<<<< HEAD
               <span className="font-medium"><LatexRenderer>{quiz.title}</LatexRenderer></span>
+=======
+              <span className="font-medium">{quiz.title}</span>
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
             </div>
             <div className="flex justify-between py-2 border-b border-gray-100">
               <span className="text-gray-600">Completed At:</span>
@@ -668,9 +705,13 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
                       
                       {/* Question Text */}
                       {question.questionText && (
+<<<<<<< HEAD
                         <h3 className="font-semibold text-gray-800 mb-3">
                           <LatexRenderer>{question.questionText}</LatexRenderer>
                         </h3>
+=======
+                        <h3 className="font-semibold text-gray-800 mb-3">{question.questionText}</h3>
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
                       )}
                       
                       {/* Show note if question has only image */}
@@ -700,7 +741,11 @@ const QuizResultComponent: React.FC<QuizResultProps> = ({
                                 {selectedOption?.id === option.id && !option.isCorrect && (
                                   <XCircle size={16} className="text-red-600" />
                                 )}
+<<<<<<< HEAD
                                 <span><LatexRenderer>{option.text}</LatexRenderer></span>
+=======
+                                <span>{option.text}</span>
+>>>>>>> 4fd9c67045d31cb3c595859ceceff40696deeb3d
                                 {option.isCorrect && (
                                   <span className="ml-auto text-xs font-semibold bg-green-200 text-green-800 px-2 py-1 rounded">
                                     Correct Answer

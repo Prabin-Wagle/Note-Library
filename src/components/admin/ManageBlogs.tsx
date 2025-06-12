@@ -73,6 +73,7 @@ const ManageBlogs: React.FC = () => {
   const handleFormSubmit = async (formData: any) => {
     try {
       if (editingBlog) {
+        // Update existing blog
         const blogRef = doc(db, 'blogs', editingBlog.id);
         await updateDoc(blogRef, { ...formData, updatedAt: serverTimestamp() });
         toast.success('Blog post updated successfully!');
